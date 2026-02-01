@@ -13,7 +13,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       # Looks like inno setup exists by default...
       # - name: Install Inno Setup
@@ -22,7 +22,6 @@ jobs:
       - name: Run build script
         shell: cmd
         run: build-app.bat
-
 
       - name: Upload installer to GitHub Release
         uses: softprops/action-gh-release@v2
