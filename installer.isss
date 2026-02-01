@@ -1,0 +1,21 @@
+#define MyAppName "HelloApp"
+#define MyAppVersion "1.0.0"
+#define MyAppPublisher "Your Company"
+#define MyAppExeName "hello.txt"
+
+[Setup]
+AppId={{A1B2C3D4-1234-5678-ABCD-1234567890AB}}
+AppName={#MyAppName}
+AppVersion={#MyAppVersion}
+AppPublisher={#MyAppPublisher}
+DefaultDirName={autopf}\{#MyAppName}
+OutputBaseFilename=HelloAppInstaller
+OutputDir=dist
+Compression=lzma
+SolidCompression=yes
+
+[Files]
+Source: "build\hello-world.txt"; DestDir: "{app}"; Flags: ignoreversion
+
+[Icons]
+Name: "{group}\{#MyAppName}"; Filename: "{app}\hello-world.txt"

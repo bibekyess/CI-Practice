@@ -1,0 +1,2 @@
+Hello from CI/CD 👋
+This will be bundled into the installer.

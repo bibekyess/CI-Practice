@@ -1,0 +1,28 @@
+name: Build Windows Installer (Release)
+
+on:
+  release:
+    types: [created, edited]
+
+jobs:
+  build-installer:
+    runs-on: windows-latest
+
+    permissions:
+      contents: write   # REQUIRED to upload assets to release
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run build script
+        shell: cmd
+        run: build-app.bat
+
+      - name: Install Inno Setup
+        run: choco install innosetup --no-progress -y
+
+      - name: Upload installer to GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*.exe
