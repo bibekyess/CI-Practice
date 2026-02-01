@@ -15,12 +15,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # Looks like inno setup exists by default...
+      # - name: Install Inno Setup
+      #   run: choco install innosetup --no-progress -y
+
       - name: Run build script
         shell: cmd
         run: build-app.bat
 
-      - name: Install Inno Setup
-        run: choco install innosetup --no-progress -y
 
       - name: Upload installer to GitHub Release
         uses: softprops/action-gh-release@v2
